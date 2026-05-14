@@ -45,8 +45,22 @@ jobs:
           xcodebuild -version
           xcrun --sdk iphoneos --show-sdk-version
 
-      - name: Install xcbeautify
-        run: brew install xcbeautify
+      - name: Install build dependencies
+        run: |
+          brew install xcbeautify ldid
+          echo "ldid: $(which ldid)"
+
+      - name: Build XPF prebuilt libraries
+        run: |
+          set -euo pipefail
+          cd darksword-kexploit-fun/XPF
+          # Build the iOS libxpf.dylib that the app links against.
+          # Skip xpf_test (it's a CLI binary not needed by the app).
+          make output/ios/libxpf.dylib
+          # The xcodeproj has a framework search path for output/macos too;
+          # create the directory so ld doesn't warn.
+          mkdir -p output/macos
+          ls -la output/ios/
 
       - name: Build IPA
         run: ./scripts/build.sh
