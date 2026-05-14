@@ -39,8 +39,10 @@ iOS/iPadOS 18.7.2 and 26.1. Later builds are outside this kernel exploit window.
 These tweaks have only been tested on iOS 18.x. Expect version drift in
 SpringBoard and related daemons to break things on other releases.
 
-- **SBCustomizer**: dock icon count, home-screen columns/rows, and hidden icon
-  labels. This ports the lightsaber sbcustomizer payload to native remote-call.
+- **SBCustomizer**: dock icon count, home-screen columns/rows, hidden icon
+  labels, and hidden icon badges (red unread/notification badges on
+  home-screen and dock icons). This ports the lightsaber sbcustomizer payload
+  to native remote-call.
 - **SpringBoard Tweaks**: disable App Library, disable icon fly-in animation,
   zero wake animation, zero backlight fade, and double-tap to lock. Ported from
   [`kolbicz/DarkSword-Tweaks`](https://github.com/kolbicz/DarkSword-Tweaks).
